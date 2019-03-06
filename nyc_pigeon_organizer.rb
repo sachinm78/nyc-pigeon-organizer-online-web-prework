@@ -1,13 +1,12 @@
 def nyc_pigeon_organizer(data)
+  names = []
   pigeon_list = {}
-  data.each do |trait, attributes|
-    attributes.each do |details, names|
-      names.each do |name|
-        pigeon_list[name] ||= {}
-        pigeon_list[name][trait] ||= []
-        pigeon_list[name][trait] << details.to_s
+  data.each do |attribute, items|
+    items.each do |feature, array|
+      array.each do |name|
+        names << name if !names.include?(name)
       end
     end
   end
-  return pigeon_list
+  pigeon_list
 end
